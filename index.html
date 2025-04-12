@@ -48,6 +48,11 @@
             justify-content: center;
         }
 
+        .logo img {
+            height: 80px;
+            margin-right: 0.5rem;
+        }
+
         .logo i {
             margin-right: 0.5rem;
             color: var(--accent-color);
@@ -220,11 +225,30 @@
             opacity: 0;
             transform: translateX(-20px);
             transition: opacity 0.5s, transform 0.5s;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .curiosity-item.visible {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        .curiosity-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .curiosity-image {
+            flex: 0 0 200px;
+            margin-left: 1rem;
+        }
+
+        .curiosity-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .curiosity-item h3 {
@@ -259,6 +283,26 @@
             margin: 1rem 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .random-fact-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .random-fact-image {
+            flex: 0 0 200px;
+            margin-left: 1rem;
+        }
+
+        .random-fact-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .random-fact-container::before {
@@ -480,6 +524,25 @@
 
         .modal-body {
             margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .modal-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .modal-image {
+            flex: 0 0 200px;
+            margin-left: 1rem;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .modal-footer {
@@ -536,13 +599,20 @@
                 border-radius: 5px;
                 padding: 0.8rem;
             }
+
+            .curiosity-image, .random-fact-image, .modal-image {
+                flex: 0 0 100%;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <i class="fas fa-palette"></i>
+            <!-- Replace with your logo image -->
+            <img src="imagens\logo.png" alt="Diua já sabia Logo" id="logo-image">
             <span>Diua já sabia</span>
         </div>
         <div class="subtitle">Há muitos factos interessantes que não sabias, mas Diua já sabia. Então Venha descobrir!</div>
@@ -613,40 +683,70 @@
             <h2><i class="fas fa-lightbulb"></i> Curiosidades em Destaque</h2>
             
             <div class="curiosity-item">
-                <h3>A Tinta Mais Cara do Mundo</h3>
-                <p>O azul ultramarino era mais valioso que o ouro durante o Renascimento. Feito de lápis-lazúli, um mineral raro encontrado principalmente no Afeganistão, era reservado para pintar o manto da Virgem Maria e outras figuras importantes.</p>
-                <p class="source">Fonte: História da Arte, Gombrich</p>
+                <div class="curiosity-text">
+                    <h3>A Tinta Mais Cara do Mundo</h3>
+                    <p>O azul ultramarino era mais valioso que o ouro durante o Renascimento. Feito de lápis-lazúli, um mineral raro encontrado principalmente no Afeganistão, era reservado para pintar o manto da Virgem Maria e outras figuras importantes.</p>
+                    <p class="source">Fonte: História da Arte, Gombrich</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens\Ultramarinepigment.jpg" alt="Azul ultramarino" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>O Segredo da Mona Lisa</h3>
-                <p>Leonardo da Vinci usou uma técnica chamada "sfumato" (do italiano "esfumaçado") para criar o sorriso enigmático da Mona Lisa. Esta técnica envolve a sobreposição de camadas muito finas de tinta para criar transições suaves entre luz e sombra.</p>
-                <p class="source">Fonte: Estudos da Renascença Italiana</p>
+                <div class="curiosity-text">
+                    <h3>O Segredo da Mona Lisa</h3>
+                    <p>Leonardo da Vinci usou uma técnica chamada "sfumato" (do italiano "esfumaçado") para criar o sorriso enigmático da Mona Lisa. Esta técnica envolve a sobreposição de camadas muito finas de tinta para criar transições suaves entre luz e sombra.</p>
+                    <p class="source">Fonte: Estudos da Renascença Italiana</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg" alt="Mona Lisa" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>A Matemática na Arquitetura Grega</h3>
-                <p>Os gregos antigos construíram colunas que se inclinam ligeiramente para dentro para criar uma ilusão de ótica. Se prolongadas, todas as colunas do Parthenon se encontrariam a aproximadamente 1,6 km acima do templo.</p>
-                <p class="source">Fonte: Arquitetura Clássica, Robert Adam</p>
+                <div class="curiosity-text">
+                    <h3>A Matemática na Arquitetura Grega</h3>
+                    <p>Os gregos antigos construíram colunas que se inclinam ligeiramente para dentro para criar uma ilusão de ótica. Se prolongadas, todas as colunas do Parthenon se encontrariam a aproximadamente 1,6 km acima do templo.</p>
+                    <p class="source">Fonte: Arquitetura Clássica, Robert Adam</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="The_Parthenon_in_Athens.jpg" alt="Parthenon" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>O Desenho Técnico de Leonardo</h3>
-                <p>Leonardo da Vinci não apenas foi um grande artista, mas também um engenheiro visionário. Seus cadernos contêm desenhos técnicos de helicópteros, tanques, calculadoras e muitos outros dispositivos que só seriam inventados séculos depois.</p>
-                <p class="source">Fonte: Os Cadernos de Leonardo da Vinci</p>
+                <div class="curiosity-text">
+                    <h3>O Desenho Técnico de Leonardo</h3>
+                    <p>Leonardo da Vinci não apenas foi um grande artista, mas também um engenheiro visionário. Seus cadernos contêm desenhos técnicos de helicópteros, tanques, calculadoras e muitos outros dispositivos que só seriam inventados séculos depois.</p>
+                    <p class="source">Fonte: Os Cadernos de Leonardo da Vinci</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens\Leonardo_da_Vinci_helicopter_and_lifting_wing.jpg" alt="Desenhos técnicos de Leonardo" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>A Perspectiva Revolucionária</h3>
-                <p>A perspectiva linear foi formalizada no início do Renascimento pelo arquiteto Filippo Brunelleschi. Esta técnica revolucionou a arte ao permitir representar o espaço tridimensional em uma superfície bidimensional de forma matematicamente precisa.</p>
-                <p class="source">Fonte: História da Perspectiva na Arte</p>
+                <div class="curiosity-text">
+                    <h3>A Perspectiva Revolucionária</h3>
+                    <p>A perspectiva linear foi formalizada no início do Renascimento pelo arquiteto Filippo Brunelleschi. Esta técnica revolucionou a arte ao permitir representar o espaço tridimensional em uma superfície bidimensional de forma matematicamente precisa.</p>
+                    <p class="source">Fonte: História da Perspectiva na Arte</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Staircase_perspective.jpg" alt="Perspectiva linear" class="curiosity-img">
+                </div>
             </div>
         </section>
 
         <section class="random-curiosity">
             <h2>Curiosidade Aleatória</h2>
             <div class="random-fact-container" id="random-fact">
-                <p>Carregando uma curiosidade fascinante...</p>
+                <div class="random-fact-text">
+                    <p>Carregando uma curiosidade fascinante...</p>
+                </div>
+                <div class="random-fact-image">
+                    <img src="random-fact.png" alt="Curiosidade aleatória" id="random-fact-img">
+                </div>
             </div>
             <button id="new-fact-btn" class="btn">Nova Curiosidade</button>
         </section>
@@ -655,21 +755,36 @@
             <h2><i class="fas fa-paint-brush"></i> Desenho e Pintura</h2>
             
             <div class="curiosity-item">
-                <h3>Lápis de Grafite</h3>
-                <p>O lápis de grafite foi inventado após a descoberta de uma enorme mina de grafite puro na Inglaterra em 1564. Inicialmente, os pedaços de grafite eram envolvidos em cordas ou pele de carneiro para uso. O lápis de madeira como conhecemos hoje só foi desenvolvido no século XVII.</p>
-                <p class="source">Fonte: História dos Materiais Artísticos</p>
+                <div class="curiosity-text">
+                    <h3>Lápis de Grafite</h3>
+                    <p>O lápis de grafite foi inventado após a descoberta de uma enorme mina de grafite puro na Inglaterra em 1564. Inicialmente, os pedaços de grafite eram envolvidos em cordas ou pele de carneiro para uso. O lápis de madeira como conhecemos hoje só foi desenvolvido no século XVII.</p>
+                    <p class="source">Fonte: História dos Materiais Artísticos</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Pencil_tip_closeup_2.jfif" alt="Lápis de grafite" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>Pintura Invisível de Van Gogh</h3>
-                <p>Usando tecnologia de raio-X, cientistas descobriram que Van Gogh frequentemente pintava por cima de suas obras anteriores para economizar dinheiro em telas. Estima-se que um terço de suas primeiras obras tenha outras pinturas escondidas por baixo.</p>
-                <p class="source">Fonte: Museu Van Gogh, Amsterdã</p>
+                <div class="curiosity-text">
+                    <h3>Pintura Invisível de Van Gogh</h3>
+                    <p>Usando tecnologia de raio-X, cientistas descobriram que Van Gogh frequentemente pintava por cima de suas obras anteriores para economizar dinheiro em telas. Estima-se que um terço de suas primeiras obras tenha outras pinturas escondidas por baixo.</p>
+                    <p class="source">Fonte: Museu Van Gogh, Amsterdã</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/imagem-de-raio-x-revela-a-pintura-escondida-de-vincent-van-gogh_1_258711.webp" alt="Pintura de Van Gogh" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>A Primeira Fotografia</h3>
-                <p>A primeira fotografia permanente foi tirada em 1826 por Joseph Nicéphore Niépce, e precisou de uma exposição de 8 horas. Chamada "Vista da janela em Le Gras", a imagem mostra o quintal de sua propriedade na França.</p>
-                <p class="source">Fonte: História da Fotografia</p>
+                <div class="curiosity-text">
+                    <h3>A Primeira Fotografia</h3>
+                    <p>A primeira fotografia permanente foi tirada em 1826 por Joseph Nicéphore Niépce, e precisou de uma exposição de 8 horas. Chamada "Vista da janela em Le Gras", a imagem mostra o quintal de sua propriedade na França.</p>
+                    <p class="source">Fonte: História da Fotografia</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/View_from_the_Window_at_Le_Gras,_Joseph_Nicéphore_Niépce.jpg" alt="Primeira fotografia" class="curiosity-img">
+                </div>
             </div>
         </section>
 
@@ -677,21 +792,36 @@
             <h2><i class="fas fa-landmark"></i> Arquitetura</h2>
             
             <div class="curiosity-item">
-                <h3>Segredo da Durabilidade do Concreto Romano</h3>
-                <p>O concreto romano, usado há mais de 2.000 anos, é mais durável que o concreto moderno. Cientistas descobriram que a água do mar, em vez de deteriorar o material, na verdade fortalece-o através de uma reação química com os componentes vulcânicos da mistura.</p>
-                <p class="source">Fonte: American Mineralogist</p>
+                <div class="curiosity-text">
+                    <h3>Segredo da Durabilidade do Concreto Romano</h3>
+                    <p>O concreto romano, usado há mais de 2.000 anos, é mais durável que o concreto moderno. Cientistas descobriram que a água do mar, em vez de deteriorar o material, na verdade fortalece-o através de uma reação química com os componentes vulcânicos da mistura.</p>
+                    <p class="source">Fonte: American Mineralogist</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/OpusCaementiciumViaAppiaAntica.jpg" alt="Concreto romano" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>A Torre Inclinada de Pisa</h3>
-                <p>A famosa inclinação da Torre de Pisa não foi intencional. A torre começou a inclinar durante sua construção devido ao solo macio de um lado. A construção levou quase 200 anos para ser concluída, permitindo que o solo se compactasse, o que evitou seu colapso.</p>
-                <p class="source">Fonte: Estudos de Engenharia Histórica</p>
+                <div class="curiosity-text">
+                    <h3>A Torre Inclinada de Pisa</h3>
+                    <p>A famosa inclinação da Torre de Pisa não foi intencional. A torre começou a inclinar durante sua construção devido ao solo macio de um lado. A construção levou quase 200 anos para ser concluída, permitindo que o solo se compactasse, o que evitou seu colapso.</p>
+                    <p class="source">Fonte: Estudos de Engenharia Histórica</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Italy_-_Pisa_-_Leaning_Tower.jpg" alt="Torre de Pisa" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>Arquitetura Antissísmica Antiga</h3>
-                <p>Os templos gregos antigos frequentemente incorporavam um sistema de "isolamento sísmico" primitivo. Camadas de carvão, areia ou lã entre as fundações e a estrutura principal funcionavam como amortecedores durante terremotos.</p>
-                <p class="source">Fonte: Arqueologia Arquitetônica</p>
+                <div class="curiosity-text">
+                    <h3>Arquitetura Antissísmica Antiga</h3>
+                    <p>Os templos gregos antigos frequentemente incorporavam um sistema de "isolamento sísmico" primitivo. Camadas de carvão, areia ou lã entre as fundações e a estrutura principal funcionavam como amortecedores durante terremotos.</p>
+                    <p class="source">Fonte: Arqueologia Arquitetônica</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Athen_BW_2017-10-09_14-37-37.jpg" alt="Templo grego" class="curiosity-img">
+                </div>
             </div>
         </section>
 
@@ -699,21 +829,36 @@
             <h2><i class="fas fa-drafting-compass"></i> Desenho Técnico</h2>
             
             <div class="curiosity-item">
-                <h3>Origem do Papel Milimetrado</h3>
-                <p>O papel milimetrado foi inventado pelo Dr. Buxton no início do século XIX para ajudar pacientes com problemas de coordenação motora a melhorar sua caligrafia. Só depois foi adotado por engenheiros e desenhistas técnicos.</p>
-                <p class="source">Fonte: História dos Instrumentos de Desenho</p>
+                <div class="curiosity-text">
+                    <h3>Origem do Papel Milimetrado</h3>
+                    <p>O papel milimetrado foi inventado pelo Dr. Buxton no início do século XIX para ajudar pacientes com problemas de coordenação motora a melhorar sua caligrafia. Só depois foi adotado por engenheiros e desenhistas técnicos.</p>
+                    <p class="source">Fonte: História dos Instrumentos de Desenho</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Two_styles_of_graph_paper_(5843580902).jpg" alt="Papel milimetrado" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>O Compasso Perfeito</h3>
-                <p>O compasso moderno de precisão foi desenvolvido no século XVIII por matemáticos franceses. Antes disso, os compassos eram frequentemente imprecisos, levando a erros significativos em projetos de engenharia e arquitetura.</p>
-                <p class="source">Fonte: Instrumentos Matemáticos Históricos</p>
+                <div class="curiosity-text">
+                    <h3>O Compasso Perfeito</h3>
+                    <p>O compasso moderno de precisão foi desenvolvido no século XVIII por matemáticos franceses. Antes disso, os compassos eram frequentemente imprecisos, levando a erros significativos em projetos de engenharia e arquitetura.</p>
+                    <p class="source">Fonte: Instrumentos Matemáticos Históricos</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/ICCD5537482_Z0019048.jpg" alt="Compasso de precisão" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>CAD: Revolução Silenciosa</h3>
-                <p>O primeiro sistema CAD (Computer-Aided Design) comercial, chamado "Sketchpad", foi desenvolvido por Ivan Sutherland em 1963 como parte de sua tese de doutorado no MIT. Este sistema pioneiro permitia que os usuários desenhassem diretamente na tela com uma caneta óptica.</p>
-                <p class="source">Fonte: História da Computação Gráfica</p>
+                <div class="curiosity-text">
+                    <h3>CAD: Revolução Silenciosa</h3>
+                    <p>O primeiro sistema CAD (Computer-Aided Design) comercial, chamado "Sketchpad", foi desenvolvido por Ivan Sutherland em 1963 como parte de sua tese de doutorado no MIT. Este sistema pioneiro permitia que os usuários desenhassem diretamente na tela com uma caneta óptica.</p>
+                    <p class="source">Fonte: História da Computação Gráfica</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Sketchpad-Apple.jpg" alt="Primeiro sistema CAD" class="curiosity-img">
+                </div>
             </div>
         </section>
 
@@ -721,29 +866,44 @@
             <h2><i class="fas fa-book-open"></i> História da Arte</h2>
             
             <div class="curiosity-item">
-                <h3>As Cores Proibidas</h3>
-                <p>Na China antiga, a cor amarela era reservada exclusivamente para o imperador. Qualquer pessoa comum que usasse roupas amarelas poderia ser condenada à morte por traição.</p>
-                <p class="source">Fonte: História Cultural da China</p>
+                <div class="curiosity-text">
+                    <h3>As Cores Proibidas</h3>
+                    <p>Na China antiga, a cor amarela era reservada exclusivamente para o imperador. Qualquer pessoa comum que usasse roupas amarelas poderia ser condenada à morte por traição.</p>
+                    <p class="source">Fonte: História Cultural da China</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/A_Seated_Portrait_of_Ming_Emperor_Taizu.jpg" alt="Imperador chinês" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>O Roubo da Mona Lisa</h3>
-                <p>Quando a Mona Lisa foi roubada do Louvre em 1911, Pablo Picasso foi brevemente considerado suspeito e interrogado pela polícia. O verdadeiro ladrão era um funcionário do museu que acreditava que a pintura deveria retornar à Itália.</p>
-                <p class="source">Fonte: Crimes na História da Arte</p>
+                <div class="curiosity-text">
+                    <h3>O Roubo da Mona Lisa</h3>
+                    <p>Quando a Mona Lisa foi roubada do Louvre em 1911, Pablo Picasso foi brevemente considerado suspeito e interrogado pela polícia. O verdadeiro ladrão era um funcionário do museu que acreditava que a pintura deveria retornar à Itália.</p>
+                    <p class="source">Fonte: Crimes na História da Arte</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg" alt="Roubo da Mona Lisa" class="curiosity-img">
+                </div>
             </div>
 
             <div class="curiosity-item">
-                <h3>Arte Rupestre Duradoura</h3>
-                <p>As pinturas rupestres pré-históricas, como as encontradas na caverna de Lascaux na França, sobreviveram por mais de 17.000 anos. Os pigmentos naturais usados (óxidos minerais, carvão vegetal e ocre) provaram ser mais duradouros que muitas tintas modernas.</p>
-                <p class="source">Fonte: Estudos de Arte Pré-histórica</p>
+                <div class="curiosity-text">
+                    <h3>Arte Rupestre Duradoura</h3>
+                    <p>As pinturas rupestres pré-históricas, como as encontradas na caverna de Lascaux na França, sobreviveram por mais de 17.000 anos. Os pigmentos naturais usados (óxidos minerais, carvão vegetal e ocre) provaram ser mais duradouros que muitas tintas modernas.</p>
+                    <p class="source">Fonte: Estudos de Arte Pré-histórica</p>
+                </div>
+                <div class="curiosity-image">
+                    <img src="imagens/Lascaux_painting.jpg" alt="Arte rupestre" class="curiosity-img">
+                </div>
             </div>
         </section>
 
         <section class="newsletter">
-            <h2>Receba Curiosidades Semanais</h2>
+            <h2>Receba Curiosidades Semanais (brevemente)</h2>
             <p>Inscreva-se em nossa newsletter para receber curiosidades fascinantes sobre arte e desenho técnico diretamente em seu e-mail.</p>
             <form class="newsletter-form">
-                <input type="email" placeholder="Seu melhor e-mail" required>
+                <input type="email" placeholder="Seu e-mail" required>
                 <button type="submit"><i class="fas fa-paper-plane"></i> Inscrever</button>
             </form>
         </section>
@@ -752,14 +912,13 @@
     <footer id="contato">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Sobre Curiosidades</h3>
+                <h3>Sobre Diua ja sabia</h3>
                 <p>Um portal dedicado a compartilhar conhecimentos fascinantes sobre arte, desenho, arquitetura e técnicas que moldaram nossa história visual.</p>
                 <p>Criado por:<strong> Coragem Gonçalves Raúl Diua </strong> </p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                     <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://web.facebook.com/share/p/1D6MoDrhcj/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/coragem_diua" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/258872007783" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
 
@@ -797,7 +956,12 @@
                 <h2>Você Sabia?</h2>
             </div>
             <div class="modal-body" id="modal-fact">
-                <!-- Conteúdo da curiosidade será inserido aqui -->
+                <div class="modal-text">
+                    <!-- Conteúdo da curiosidade será inserido aqui -->
+                </div>
+                <div class="modal-image">
+                    <img src="modal-fact.png" alt="Curiosidade" id="modal-fact-img">
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn" id="close-modal-btn">Fechar</button>
@@ -810,43 +974,53 @@
         const curiosidades = [
             {
                 titulo: "Michelangelo e a Capela Sistina",
-                texto: "Michelangelo pintou o teto da Capela Sistina deitado de costas em andaimes por quatro anos (1508-1512). Contrariamente à crença popular, ele não pintou deitado, mas em pé, com o pescoço inclinado para trás, o que causou dores crônicas e problemas de visão."
+                texto: "Michelangelo pintou o teto da Capela Sistina deitado de costas em andaimes por quatro anos (1508-1512). Contrariamente à crença popular, ele não pintou deitado, mas em pé, com o pescoço inclinado para trás, o que causou dores crônicas e problemas de visão.",
+                imagem: "Sistine_chapel.jpg"
             },
             {
                 titulo: "A Tinta Preta Mais Preta",
-                texto: "O Vantablack é o material mais escuro já criado, absorvendo 99,96% da luz visível. É tão escuro que objetos tridimensionais pintados com ele parecem silhuetas bidimensionais. Inicialmente desenvolvido para aplicações aeroespaciais, agora é usado também em arte."
+                texto: "O Vantablack é o material mais escuro já criado, absorvendo 99,96% da luz visível. É tão escuro que objetos tridimensionais pintados com ele parecem silhuetas bidimensionais. Inicialmente desenvolvido para aplicações aeroespaciais, agora é usado também em arte.",
+                imagem: "Vantablack_01.jpeg"
             },
             {
                 titulo: "O Segredo do Pantheon",
-                texto: "O Pantheon em Roma, construído há quase 2.000 anos, ainda possui a maior cúpula de concreto não reforçado do mundo. O segredo da durabilidade está na composição do concreto, que fica mais leve à medida que se aproxima do topo da cúpula."
+                texto: "O Pantheon em Roma, construído há quase 2.000 anos, ainda possui a maior cúpula de concreto não reforçado do mundo. O segredo da durabilidade está na composição do concreto, que fica mais leve à medida que se aproxima do topo da cúpula.",
+                imagem: "Panthéon,_Paris_25_March_2012.jpg"
             },
             {
                 titulo: "A Regra de Ouro",
-                texto: "A proporção áurea (aproximadamente 1:1,618) aparece em inúmeras obras de arte e arquitetura, desde o Parthenon até a Mona Lisa. Muitos artistas e arquitetos acreditam que esta proporção cria a composição mais esteticamente agradável ao olho humano."
+                texto: "A proporção áurea (aproximadamente 1:1,618) aparece em inúmeras obras de arte e arquitetura, desde o Parthenon até a Mona Lisa. Muitos artistas e arquitetos acreditam que esta proporção cria a composição mais esteticamente agradável ao olho humano.",
+                imagem: "Divisao-em-media-e-extrema-razao.jpg"
             },
             {
                 titulo: "A Origem do Papel",
-                texto: "O papel foi inventado na China por volta de 105 d.C. por Cai Lun, um oficial da corte imperial. Antes disso, as pessoas escreviam em seda, bambu, madeira e até casca de árvore. O segredo da fabricação do papel permaneceu na China por quase 700 anos."
+                texto: "O papel foi inventado na China por volta de 105 d.C. por Cai Lun, um oficial da corte imperial. Antes disso, as pessoas escreviam em seda, bambu, madeira e até casca de árvore. O segredo da fabricação do papel permaneceu na China por quase 700 anos.",
+                imagem: "Paperball_2.jpeg"
             },
             {
                 titulo: "A Primeira Planta Arquitetônica",
-                texto: "A planta arquitetônica mais antiga conhecida é o Templo de Gudea, datado de aproximadamente 2130 a.C. na Mesopotâmia. Foi gravada em uma estátua de pedra e mostra o projeto de um templo com notável precisão para a época."
+                texto: "A planta arquitetônica mais antiga conhecida é o Templo de Gudea, datado de aproximadamente 2130 a.C. na Mesopotâmia. Foi gravada em uma estátua de pedra e mostra o projeto de um templo com notável precisão para a época.",
+                imagem: "foto_introduccion.jpg"
             },
             {
                 titulo: "Os Lápis e a Grafite",
-                texto: "Os lápis modernos não contêm chumbo, mas uma mistura de grafite e argila. O equívoco vem do termo antigo para grafite, 'plumbago' ou 'black lead' (chumbo preto), devido à sua aparência semelhante ao chumbo."
+                texto: "Os lápis modernos não contêm chumbo, mas uma mistura de grafite e argila. O equívoco vem do termo antigo para grafite, 'plumbago' ou 'black lead' (chumbo preto), devido à sua aparência semelhante ao chumbo.",
+                imagem: "Graphite-233436.jpg"
             },
             {
                 titulo: "A Origem do Compasso",
-                texto: "O compasso é um dos instrumentos de desenho mais antigos, usado desde a civilização grega. Arquimedes foi morto por um soldado romano enquanto estava tão concentrado em um problema geométrico que estava resolvendo com um compasso que não percebeu a invasão da cidade."
+                texto: "O compasso é um dos instrumentos de desenho mais antigos, usado desde a civilização grega. Arquimedes foi morto por um soldado romano enquanto estava tão concentrado em um problema geométrico que estava resolvendo com um compasso que não percebeu a invasão da cidade.",
+                imagem: "Cyrkiel_RB1.jpg"
             },
             {
                 titulo: "A Cor Mais Cara da História",
-                texto: "O roxo era a cor mais cara da antiguidade, extraída de milhares de moluscos marinhos (Murex). Era tão valioso que apenas a realeza podia usá-lo, originando o termo 'púrpura real'. Eram necessários mais de 9.000 moluscos para produzir apenas um grama de corante."
+                texto: "O roxo era a cor mais cara da antiguidade, extraída de milhares de moluscos marinhos (Murex). Era tão valioso que apenas a realeza podia usá-lo, originando o termo 'púrpura real'. Eram necessários mais de 9.000 moluscos para produzir apenas um grama de corante.",
+                imagem: "0e588c00-95b4-11ee-91bf-230bfab3fcba.jpg.webp"
             },
             {
                 titulo: "Desenho Técnico na Renascença",
-                texto: "Durante a Renascença, os desenhos técnicos eram frequentemente mantidos em segredo. As guildas de artesãos protegiam zelosamente seus conhecimentos técnicos, e muitos mestres só revelavam certos aspectos de seus desenhos para aprendizes após anos de serviço."
+                texto: "Durante a Renascença, os desenhos técnicos eram frequentemente mantidos em segredo. As guildas de artesãos protegiam zelosamente seus conhecimentos técnicos, e muitos mestres só revelavam certos aspectos de seus desenhos para aprendizes após anos de serviço.",
+                imagem: "Plan-Santo-Spirito-Brunelleschiego-651x1024.jpg"
             }
         ];
 
@@ -901,6 +1075,7 @@
 
             // Curiosidade aleatória
             const randomFactContainer = document.getElementById('random-fact');
+            const randomFactImg = document.getElementById('random-fact-img');
             const newFactBtn = document.getElementById('new-fact-btn');
             
             function displayRandomFact() {
@@ -908,8 +1083,13 @@
                 const fact = curiosidades[randomIndex];
                 
                 randomFactContainer.innerHTML = `
-                    <h3>${fact.titulo}</h3>
-                    <p>${fact.texto}</p>
+                    <div class="random-fact-text">
+                        <h3>${fact.titulo}</h3>
+                        <p>${fact.texto}</p>
+                    </div>
+                    <div class="random-fact-image">
+                        <img src="${fact.imagem}" alt="${fact.titulo}" id="random-fact-img">
+                    </div>
                 `;
             }
             
@@ -919,14 +1099,20 @@
             // Modal de curiosidades
             const modal = document.getElementById('fact-modal');
             const modalFact = document.getElementById('modal-fact');
+            const modalFactImg = document.getElementById('modal-fact-img');
             const closeModalBtn = document.querySelector('.close-modal');
             const closeModalBtnFooter = document.getElementById('close-modal-btn');
             
             // Função para abrir o modal com uma curiosidade específica
             function openFactModal(fact) {
                 modalFact.innerHTML = `
-                    <h3>${fact.titulo}</h3>
-                    <p>${fact.texto}</p>
+                    <div class="modal-text">
+                        <h3>${fact.titulo}</h3>
+                        <p>${fact.texto}</p>
+                    </div>
+                    <div class="modal-image">
+                        <img src="${fact.imagem}" alt="${fact.titulo}" id="modal-fact-img">
+                    </div>
                 `;
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden'; // Impedir rolagem do body
