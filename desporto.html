@@ -1,0 +1,813 @@
+<!DOCTYPE html><html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desporto | DIUA JÁ SABIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --background-color: #f9f9f9;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }@media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #c0392b;
+            --background-color: #121212;
+            --card-background: #1e1e1e;
+            --text-color: #f0f0f0;
+            --text-secondary: #aaaaaa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        transition: var(--transition);
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 1.5rem 0;
+        text-align: center;
+        box-shadow: var(--shadow);
+        position: relative;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    nav {
+        background-color: var(--card-background);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-color);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin: 0 1rem;
+    }
+
+    .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0.8rem;
+        border-radius: 4px;
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .nav-links a i {
+        margin-right: 0.5rem;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .category-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-icon {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .category-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .category-description {
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+
+    .facts-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .fact-card {
+        background-color: var(--card-background);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .fact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .fact-img {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .fact-content {
+        padding: 1.5rem;
+    }
+
+    .fact-number {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 30px;
+        margin-bottom: 0.8rem;
+    }
+
+    .fact-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-color);
+    }
+
+    .fact-text {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+    }
+
+    .fact-source {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-style: italic;
+    }
+
+    .did-you-know {
+        background-color: var(--card-background);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .did-you-know::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .did-you-know h2 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .did-you-know h2 i {
+        margin-right: 1rem;
+        color: var(--primary-color);
+    }
+
+    .random-fact {
+        padding: 1rem;
+        background-color: rgba(52, 152, 219, 0.1);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .btn-refresh {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: var(--transition);
+        font-weight: bold;
+        margin: 0 auto;
+    }
+
+    .btn-refresh i {
+        margin-right: 0.5rem;
+    }
+
+    .btn-refresh:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: var(--primary-color);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+        border-radius: 3px;
+    }
+
+    .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: var(--card-background);
+        border: 4px solid var(--primary-color);
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .right {
+        left: 50%;
+    }
+
+    .left::after {
+        right: -10px;
+    }
+
+    .right::after {
+        left: -10px;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+        background-color: var(--card-background);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+    }
+
+    .timeline-date {
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .related-categories {
+        margin-bottom: 3rem;
+    }
+
+    .related-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .related-card {
+        background-color: var(--card-background);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .related-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .related-card i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .related-card h3 {
+        margin-bottom: 0.8rem;
+    }
+
+    .related-card a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+    }
+
+    .related-card a:hover {
+        color: var(--secondary-color);
+    }
+
+    footer {
+        background-color: var(--card-background);
+        padding: 3rem 1rem;
+        text-align: center;
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        margin: 0 1rem 1rem;
+        transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+        color: var(--primary-color);
+    }
+
+    .social-links {
+        margin-bottom: 2rem;
+    }
+
+    .social-links a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        margin: 0 0.5rem;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        transform: translateY(-3px);
+        background-color: var(--secondary-color);
+    }
+
+    .copyright {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    #back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        z-index: 1000;
+    }
+
+    #back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #back-to-top:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 60px;
+            left: -100%;
+            width: 80%;
+            height: calc(100vh - 60px);
+            background-color: var(--card-background);
+            flex-direction: column;
+            padding: 2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+
+        .nav-links.active {
+            left: 0;
+        }
+
+        .nav-links li {
+            margin: 1rem 0;
+        }
+
+        .timeline::after {
+            left: 31px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            padding-left: 70px;
+            padding-right: 25px;
+        }
+
+        .timeline-item::after {
+            left: 21px;
+        }
+
+        .left::after, .right::after {
+            left: 21px;
+        }
+
+        .right {
+            left: 0;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">Diua já sabia</div>
+        <div class="tagline">Explorando o fascinante mundo das curiosidades</div>
+    </header><nav>
+    <div class="nav-container">
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="arte.html"><i class="fas fa-palette"></i> Arte</a></li>
+            <li><a href="tecnologia.html"><i class="fas fa-microchip"></i> Tecnologia</a></li>
+            <li><a href="videojogos.html"><i class="fas fa-gamepad"></i> Videogames</a></li>
+            <li><a href="entretenimento.html"><i class="fas fa-film"></i> Cinema</a></li>
+            <li><a href="desporto.html"><i class="fas fa-futbol"></i> Desporto</a></li>
+            <li><a href="mocambique.html"><i class="fas fa-map-marker-alt"></i> Moçambique</a></li>
+            <li><a href="ciencia.html"><i class="fas fa-flask"></i> Ciência</a></li>
+            <li><a href="historia.html"><i class="fas fa-book-open"></i> História</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <section class="category-header">
+        <div class="category-icon">
+            <i class="fas fa-futbol"></i>
+        </div>
+        <h1 class="category-title">Curiosidades sobre Desporto</h1>
+        <p class="category-description">Descubra factos fascinantes sobre futebol, basquetebol, xadrez e outros desportos que emocionam milhões de fãs em todo o mundo.</p>
+    </section>
+
+    <section class="facts-container">
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('640px-WillemIIManchesterUnited1963a_(cropped).jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">1</span>
+                <h3 class="fact-title">O jogo mais longo da história do futebol</h3>
+                <p class="fact-text">Em 2002, um jogo entre Stockport e Doncaster Rovers durou 203 minutos (3 horas e 23 minutos) devido a falhas no sistema de iluminação. O jogo teve que ser reiniciado três vezes antes de finalmente ser concluído.</p>
+                <p class="fact-source">Fonte: The Football Association</p>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('Jordan_by_Lipofsky_16577.jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">2</span>
+                <h3 class="fact-title">Michael Jordan foi cortado do time do colégio</h3>
+                <p class="fact-text">Aos 15 anos, Michael Jordan foi cortado do time de basquetebol da sua escola porque era considerado muito baixo (1,80m na época). Ele usou essa rejeição como motivação, crescendo 20cm no ano seguinte e tornando-se uma lenda do esporte.</p>
+                <p class="fact-source">Fonte: NBA History</p>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('Checkmate2.jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">3</span>
+                <h3 class="fact-title">O xadrez tem mais possibilidades que átomos no universo</h3>
+                <p class="fact-text">O número de possíveis jogos únicos de xadrez é estimado em 10^120, enquanto o número de átomos no universo observável é cerca de 10^80. Isso significa que é virtualmente impossível que dois jogos de xadrez idênticos tenham sido jogados na história.</p>
+                <p class="fact-source">Fonte: Claude Shannon, matemático</p>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('FIS_World_Ski_Championships_Gold_Medal.jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">4</span>
+                <h3 class="fact-title">Ouro olímpico já foi de prata</h3>
+                <p class="fact-text">Nas primeiras Olimpíadas modernas (1896), os vencedores recebiam medalhas de prata e os segundos colocados recebiam medalhas de cobre. A tradição das medalhas de ouro, prata e bronze só começou em 1904.</p>
+                <p class="fact-source">Fonte: Comitê Olímpico Internacional</p>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('3F_BALBONI_Isner-batte-Mahut-70-68-immagine.jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">5</span>
+                <h3 class="fact-title">O jogo de tênis mais longo da história</h3>
+                <p class="fact-text">Em Wimbledon 2010, John Isner e Nicolas Mahut disputaram um jogo que durou 11 horas e 5 minutos, ao longo de três dias. O set final terminou 70-68 para Isner, com o jogo totalizando 183 games.</p>
+                <p class="fact-source">Fonte: Wimbledon Championships</p>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <div class="fact-img" style="background-image: url('New_York_marathon_Verrazano_bridge.jpg')"></div>
+            <div class="fact-content">
+                <span class="fact-number">6</span>
+                <h3 class="fact-title">A origem da maratona</h3>
+                <p class="fact-text">A maratona tem sua origem na lenda de Fidípides, que teria corrido cerca de 40km de Maratona a Atenas para anunciar a vitória grega sobre os persas em 490 a.C. A distância moderna de 42,195km foi estabelecida nos Jogos de Londres em 1908.</p>
+                <p class="fact-source">Fonte: Associação Internacional de Federações de Atletismo</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="did-you-know">
+        <h2><i class="fas fa-lightbulb"></i> Você Sabia?</h2>
+        <div class="random-fact" id="random-fact">
+            Carregando curiosidade...
+        </div>
+        <button class="btn-refresh" id="refresh-fact">
+            <i class="fas fa-sync-alt"></i> Nova Curiosidade
+        </button>
+    </section>
+
+    <section class="timeline">
+        <h2 class="section-title">Linha do Tempo do Desporto</h2>
+        
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-date">Antiguidade (776 a.C.)</div>
+                <h3>Primeiros Jogos Olímpicos</h3>
+                <p>Realizados em Olímpia, Grécia, em honra a Zeus. Os atletas competiam nus e os vencedores recebiam coroas de folhas de oliveira.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-date">Século XIX (1863)</div>
+                <h3>Nascimento do Futebol Moderno</h3>
+                <p>A Football Association é fundada na Inglaterra, estabelecendo as primeiras regras unificadas do futebol, separando-o do rugby.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-date">1891</div>
+                <h3>Invenção do Basquetebol</h3>
+                <p>James Naismith, um professor canadense, cria o basquetebol em Springfield, Massachusetts, como um esporte indoor para manter os alunos ativos no inverno.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-date">1896</div>
+                <h3>Primeiras Olimpíadas Modernas</h3>
+                <p>Baron Pierre de Coubertin revive os Jogos Olímpicos em Atenas, com 14 países e 241 atletas competindo em 43 eventos.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-date">1924</div>
+                <h3>Primeiros Jogos Olímpicos de Inverno</h3>
+                <p>Realizados em Chamonix, França, incluindo esportes como patinação no gelo, hóquei e esqui.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-date">1972</div>
+                <h3>Xadrez como Esporte</h3>
+                <p>A Federação Internacional de Xadrez (FIDE) é reconhecida pelo Comitê Olímpico Internacional, estabelecendo o xadrez como esporte oficial.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <div class="timeline-date">1992</div>
+                <h3>Dream Team nas Olimpíadas</h3>
+                <p>Os EUA enviam pela primeira vez jogadores da NBA para as Olimpíadas, formando o lendário "Dream Team" com Michael Jordan, Magic Johnson e Larry Bird.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <div class="timeline-date">2020</div>
+                <h3>Esportes Eletrônicos em Crescimento</h3>
+                <p>Os eSports alcançam audiências comparáveis aos esportes tradicionais, com torneios de jogos como League of Legends e Dota 2 oferecendo prêmios multimilionários.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-categories">
+        <h2 class="related-title">Categorias Relacionadas</h2>
+        <div class="related-grid">
+            <div class="related-card">
+                <i class="fas fa-book-open"></i>
+                <h3>História</h3>
+                <p>Explore como os esportes se conectam com eventos históricos importantes.</p>
+                <a href="historia.html">Ver Mais</a>
+            </div>
+            
+            <div class="related-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Moçambique</h3>
+                <p>Descubra a história e curiosidades do esporte em Moçambique.</p>
+                <a href="mocambique.html">Ver Mais</a>
+            </div>
+            
+            <div class="related-card">
+                <i class="fas fa-flask"></i>
+                <h3>Ciência</h3>
+                <p>Saiba como a ciência e a tecnologia estão transformando os esportes.</p>
+                <a href="ciencia.html">Ver Mais</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="termos.html">Termos de Uso</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 Diua já sabia!. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<div id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+    // Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Back to Top Button
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Random Sports Facts
+    const sportsFacts = [
+        "Pelé marcou seu primeiro gol profissional aos 15 anos e 11 meses, tornando-se o jogador mais jovem a marcar em uma liga profissional.",
+        "O basquetebol foi originalmente jogado com cestas de pêssego, o que exigia que alguém subisse para recuperar a bola após cada cesta.",
+        "O recorde mundial de salto em altura é de 2,45m, estabelecido por Javier Sotomayor em 1993 - mais alto que muitas girafas adultas.",
+        "O gol mais rápido da história do futebol foi marcado em 2,8 segundos por Nawaf Al-Abed em 2009.",
+        "O xadrez é considerado um esporte em mais de 100 países e é reconhecido pelo Comitê Olímpico Internacional.",
+        "A primeira partida de futebol transmitida pela TV foi entre Arsenal e Arsenal Reserves em 1937.",
+        "Usain Bolt alcançou uma velocidade máxima de 44,72 km/h durante seu recorde mundial de 100m em 2009.",
+        "O tênis de mesa (pingue-pongue) é o esporte de raquete mais praticado no mundo.",
+        "A NBA proibiu os dunk entre 1967 e 1976, alegando que eles eram anti-desportivos e danificavam as tabelas.",
+        "O golfe foi jogado na Lua em 1971 pelo astronauta Alan Shepard, que acertou duas bolas com um taco improvisado."
+    ];
+
+    const randomFactElement = document.getElementById('random-fact');
+    const refreshFactButton = document.getElementById('refresh-fact');
+
+    function displayRandomFact() {
+        const randomIndex = Math.floor(Math.random() * sportsFacts.length);
+        randomFactElement.textContent = sportsFacts[randomIndex];
+    }
+
+    // Display a random fact when the page loads
+    displayRandomFact();
+
+    // Display a new random fact when the button is clicked
+    refreshFactButton.addEventListener('click', displayRandomFact);
+
+    // Preload images for better user experience
+    window.addEventListener('load', () => {
+        // Preload fact card images
+        const factCards = document.querySelectorAll('.fact-card');
+        factCards.forEach(card => {
+            const imgUrl = card.querySelector('.fact-img').style.backgroundImage.slice(5, -2);
+            const img = new Image();
+            img.src = imgUrl;
+        });
+    });
+</script>
+</body>
+</html>
